@@ -14,11 +14,11 @@ Below you will see some examples of how the functions can be used with. The
 goal is that these functions would be easily used in a Jupyter notebook for 
 easy analysis
 
-'''
+```
 import digitalhumanities
 etrangfr=digitalhumanities.Corpus("texts/etrangerfr.txt", 'french')
 etrangfr.wordcloud()
-'''
+```
 ![Wordcloud for the french version of The Stranger][etrangerfr]
 
 
