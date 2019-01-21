@@ -20,10 +20,15 @@ etrangfr=digitalhumanities.Corpus("texts/etrangerfr.txt", 'french')
 etrangfr.wordcloud()
 ```
 ![Wordcloud for the french version of The Stranger][etrangerfr]
-
+```
+etrenglish.show_occurences("?")
+```
+![Graphs show question marks in English translation of The Stranger][etrenglishQuestion]
 
 
 
 
 
 [etrangerfr]: https://github.com/mbardoe/digitalhumanities/blob/master/wordcloudetrangerfr.png
+
+[etrenglishQuestion]: https://github.com/mbardoe/digitalhumanities/blob/master/etrengishQuestionocc.png

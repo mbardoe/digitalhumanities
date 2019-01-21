@@ -3,6 +3,7 @@ from nltk.corpus import stopwords
 import matplotlib.pyplot as plt 
 from wordcloud import WordCloud
 import os
+from .tools import find_substring
 
 class Corpus(object):
 	"""A class that represents a body of writing. This class implements a
@@ -23,13 +24,17 @@ class Corpus(object):
 		myfile=open(filename, 'r')
 		self.text=myfile.read()
 		self.language=language
-		print(os.path)
+		#print(os.path)
 
 	def all_words(self):
+		"""Returns a list of all the words tokenized in the text.
+			
+			Returns: list of of tokenized words
+		"""
 		return word_tokenize(self.text, language=self.language)
 
-	def path(self):
-		print(os.path)
+	#def path(self):
+	#	print(os.path)
 
 	def words(self):
 		filtered_text=''
@@ -60,6 +65,9 @@ class Corpus(object):
 		return stopWords
 
 	def wordcloud(self):
+		"""Creates a word cloud based ont the corpus.
+        
+        """
 		wordcloud = WordCloud(width = 800, height = 800,
                 background_color ='white',
                 min_font_size = 10).generate(self.words())
@@ -72,8 +80,16 @@ class Corpus(object):
 	def find_substring(self,substring):
 		return find_substring(substring, self.text)
 
-	def show_occurences(self, substring, binWidth=100):
-		occurances = find_substring(substring)
+	def show_occurences(self, substring, binWidth=-1):
+		"""Shows a bar plot of the occurances of the substring in the text.
+		The x-axis is the position in the text as measured in characters.
+
+        """
+
+		length=len(self.text)
+		if binWidth==-1:
+			binWidth=int(length/40)
+		occurances = find_substring(substring, self.text)
 		plt.hist(occurances, bins=range(0, len(self.text)+binWidth, binWidth))
 
 	def paragraphs(self):
