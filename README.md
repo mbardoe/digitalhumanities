@@ -21,3 +21,9 @@ etrangfr.wordcloud()
 '''
 ![Wordcloud for the french version of The Stranger][etrangerfr]
 
+
+
+
+
+
+[etrangerfr]: https://github.com/mbardoe/digitalhumanities/blob/master/wordcloudetrangerfr.png
