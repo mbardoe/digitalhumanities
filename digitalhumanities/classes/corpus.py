@@ -2,6 +2,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import matplotlib.pyplot as plt 
 from wordcloud import WordCloud
+import os
 
 class Corpus(object):
 	"""A class that represents a body of writing. This class implements a
@@ -22,15 +23,19 @@ class Corpus(object):
 		myfile=open(filename, 'r')
 		self.text=myfile.read()
 		self.language=language
+		print(os.path)
 
 	def all_words(self):
 		return word_tokenize(self.text, language=self.language)
+
+	def path(self):
+		print(os.path)
 
 	def words(self):
 		filtered_text=''
 		stopWords=self.stopwords()
 		wordsFiltered=[]
-		for w in words:
+		for w in self.all_words():
 			if w.lower() not in stopWords:
 				if w.isalpha():
 					wordsFiltered.append(w.lower())
@@ -40,8 +45,11 @@ class Corpus(object):
 		return filtered_text
 
 	def stopwords(self):
+		basepath = os.path.dirname(os.path.abspath(__file__))
+		parentpath = os.path.dirname(os.path.dirname(basepath))
+		stopwordspath = parentpath + '/digitalhumanities/classes/stopwords/' + self.language +'.dat'
 		stopWords = stopwords.words('french')
-		moreStopsFile=open('digitalhumanities/classes/stopwords/'+self.language+'.dat', 'r')
+		moreStopsFile=open(stopwordspath, 'r')
 		moreStops=moreStopsFile.read().split()
 		stopWords=set(moreStops+stopWords)
 		return stopWords
