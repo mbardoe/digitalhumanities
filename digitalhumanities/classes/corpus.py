@@ -18,6 +18,11 @@ class Corpus(object):
 		"""
 
 	def __init__(self, *args, **kwargs):
+		if 'filename' in kwargs.keys() and 'language' in kwargs.keys():
+			self.__load_file__(kwargs['filename'])
+			self.language=kwargs['language']
+		if 'text' in kwargs.keys():
+			self.text=kwargs['text']
 		if len(args)==2:
 			self.__load_file__(args[0])
 			self.language=args[1]
@@ -27,18 +32,6 @@ class Corpus(object):
 				self.language=kwargs['language']
 			else:
 				self.language='english'
-		else:
-			if not 'text' in kwargs.keys() and not 'filename' in kwargs.keys():
-				raise TypeError("Must have a filename or text argument")
-			if 'filename' in kwargs.keys():
-				self.__load_file__(kwargs['filename'])
-			if 'language' in kwargs.keys():
-				self.language=kwargs['language']
-			else:
-				self.language='english'
-			if 'text' in kwargs.keys():
-				self.text=kwargs['text']
-
 
 	
 	def __load_file__(self, filename):
