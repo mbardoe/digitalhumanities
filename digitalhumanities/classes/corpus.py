@@ -46,8 +46,8 @@ class Corpus(object):
 		wordsFiltered=[]
 		for w in words:
     		if w.lower() not in stopWords:
-        if w.isalpha():
-            wordsFiltered.append(w.lower())
+		        if w.isalpha():
+		            wordsFiltered.append(w.lower())
 		# Rebuild text from a list of words. WordCloud likes one big string.
 		for word in wordsFiltered:
     		filtered_text=filtered_text+word+' '
