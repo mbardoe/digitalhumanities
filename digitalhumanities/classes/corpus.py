@@ -41,7 +41,7 @@ class Corpus(object):
 
 	def stopwords(self):
 		stopWords = stopwords.words('french')
-		moreStopsFile=open('stopwords/'+self.language+'.dat', 'r')
+		moreStopsFile=open('digitalhumanities/classes/stopwords/'+self.language+'.dat', 'r')
 		moreStops=moreStopsFile.read().split()
 		stopWords=set(moreStops+stopWords)
 		return stopWords
