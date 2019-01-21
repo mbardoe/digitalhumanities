@@ -13,27 +13,14 @@ class Corpus(object):
 
 		text: a string that defines the corpus. Use text or filename.
 
-		language: A choice between "english" and "french".  Saved in __language__.
+		language: A choice between "english" and "french".  \
 
 		"""
 
-	def __init__(self, *args, **kwargs):
-		if 'filename' in kwargs.keys() and 'language' in kwargs.keys():
-			self.__load_file__(kwargs['filename'])
-			self.language=kwargs['language']
-		if 'text' in kwargs.keys():
-			self.text=kwargs['text']
-		if len(args)==2:
-			self.__load_file__(args[0])
-			self.language=args[1]
-		elif len(args)==1:
-			self.__load_file__(args[0])
-			if 'language' in kwargs.keys():
-				self.language=kwargs['language']
-			else:
-				self.language='english'
+	def __init__(self, filename, language='english'):
+		self.__load_file__(filename)
+		self.language=language
 
-	
 	def __load_file__(self, filename):
 		myfile=open(filename, 'r')
 		self.text=myfile.read()
