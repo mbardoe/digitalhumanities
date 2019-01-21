@@ -1,3 +1,6 @@
 *.pyc
 *checkpoint.ipynb
 .ssh/*
+.DS_Store
+.gitattributes
+.gitignore
