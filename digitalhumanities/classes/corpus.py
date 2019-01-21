@@ -18,12 +18,9 @@ class Corpus(object):
 		"""
 
 	def __init__(self, filename, language='english'):
-		self.__load_file__(filename)
-		self.language=language
-
-	def __load_file__(self, filename):
 		myfile=open(filename, 'r')
 		self.text=myfile.read()
+		self.language=language
 
 	def all_words(self):
 		return word_tokenize(self.text, language=self.language)
