@@ -1,6 +1,8 @@
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import matplotlib.pyplot as plt 
+from wordcloud import WordCloud
+import os
 
 class Corpus(object):
 	"""A class that represents a body of writing. This class implements a
@@ -13,49 +15,41 @@ class Corpus(object):
 
 		text: a string that defines the corpus. Use text or filename.
 
-		language: A choice between "english" and "french".  Saved in __language__.
+		language: A choice between "english" and "french".  \
 
 		"""
 
-	def __init__(self, **kwargs):
-		#self.__filename__=filename
-		#self.__load_file__(self.__filename__)
-		if not 'text' in kwargs.keys() and not 'filename' in kwargs.keys():
-			raise TypeError("Must have a filename or text argument")
-		if 'filename' in kwargs.keys():
-			self.__load_file__(kwargs['filename'])
-		if 'language' in kwargs.keys():
-			self.language=kwargs['language']
-		else:
-			self.language='english'
-		if 'text' in kwargs.keys():
-			self.text=kwargs['text']
-
-
-	
-	def __load_file__(self, filename):
-		myfile=open(self.__filename__, 'r')
+	def __init__(self, filename, language='english'):
+		myfile=open(filename, 'r')
 		self.text=myfile.read()
+		self.language=language
+		print(os.path)
 
 	def all_words(self):
 		return word_tokenize(self.text, language=self.language)
+
+	def path(self):
+		print(os.path)
 
 	def words(self):
 		filtered_text=''
 		stopWords=self.stopwords()
 		wordsFiltered=[]
-		for w in words:
-    		if w.lower() not in stopWords:
-        if w.isalpha():
-            wordsFiltered.append(w.lower())
+		for w in self.all_words():
+			if w.lower() not in stopWords:
+				if w.isalpha():
+					wordsFiltered.append(w.lower())
 		# Rebuild text from a list of words. WordCloud likes one big string.
 		for word in wordsFiltered:
-    		filtered_text=filtered_text+word+' '
-    	return filtered_text
+			filtered_text=filtered_text+word+' '
+		return filtered_text
 
 	def stopwords(self):
+		basepath = os.path.dirname(os.path.abspath(__file__))
+		parentpath = os.path.dirname(os.path.dirname(basepath))
+		stopwordspath = parentpath + '/digitalhumanities/classes/stopwords/' + self.language +'.dat'
 		stopWords = stopwords.words('french')
-		moreStopsFile=open('stopwords/'+self.language+'.dat', 'r')
+		moreStopsFile=open(stopwordspath, 'r')
 		moreStops=moreStopsFile.read().split()
 		stopWords=set(moreStops+stopWords)
 		return stopWords

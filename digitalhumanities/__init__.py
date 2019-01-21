@@ -1,2 +1,3 @@
-# from digitalhumanities.classes import *
-# import digitalhumanities.classes
+from digitalhumanities.classes import *
+import digitalhumanities.classes
+
