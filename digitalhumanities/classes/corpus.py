@@ -1,6 +1,7 @@
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import matplotlib.pyplot as plt 
+from wordcloud import WordCloud
 
 class Corpus(object):
 	"""A class that represents a body of writing. This class implements a
