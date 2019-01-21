@@ -38,7 +38,7 @@ class Corpus(object):
 		self.text=myfile.read()
 
 	def all_words(self):
-		return words = word_tokenize(self.text, language=self.language)
+		return word_tokenize(self.text, language=self.language)
 
 	def words(self):
 		filtered_text=''
@@ -78,5 +78,6 @@ class Corpus(object):
 		plt.hist(occurances, bins=range(0, len(self.text)+binWidth, binWidth))
 
 	def paragraphs(self):
+		
 		return 
 

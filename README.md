@@ -7,4 +7,4 @@ The goal of this class is to create wrapper functions for various '''nltk''' and
 * Show distribution of paragraph and sentence length.
 * Easily show the the word frequencies in the text.
 * Determine the grade level of various texts.
-    
+
