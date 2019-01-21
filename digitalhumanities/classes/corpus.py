@@ -45,6 +45,11 @@ class Corpus(object):
 		return filtered_text
 
 	def stopwords(self):
+		"""Collects the stopwords for the language associted with this corpus.
+
+        Returns:	A set of stopwords
+
+        """
 		basepath = os.path.dirname(os.path.abspath(__file__))
 		parentpath = os.path.dirname(os.path.dirname(basepath))
 		stopwordspath = parentpath + '/digitalhumanities/classes/stopwords/' + self.language +'.dat'
