@@ -29,6 +29,6 @@ etrenglish.show_occurences("?")
 
 
 
-[etrangerfr]: https://github.com/mbardoe/digitalhumanities/blob/master/wordcloudetrangerfr.png
+[etrangerfr]: https://github.com/mbardoe/digitalhumanities/blob/master/images/etrengishQuestionocc.png
 
-[etrenglishQuestion]: https://github.com/mbardoe/digitalhumanities/blob/master/etrengishQuestionocc.png
+[etrenglishQuestion]: https://github.com/mbardoe/digitalhumanities/blob/master/images/etrengishQuestionocc.png
