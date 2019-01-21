@@ -17,24 +17,32 @@ class Corpus(object):
 
 		"""
 
-	def __init__(self, **kwargs):
-		#self.__filename__=filename
-		#self.__load_file__(self.__filename__)
-		if not 'text' in kwargs.keys() and not 'filename' in kwargs.keys():
-			raise TypeError("Must have a filename or text argument")
-		if 'filename' in kwargs.keys():
-			self.__load_file__(kwargs['filename'])
-		if 'language' in kwargs.keys():
-			self.language=kwargs['language']
+	def __init__(self, *args, **kwargs):
+		if len(args)==2:
+			self.__load_file__(args[0])
+			self.language=args[1]
+		elif len(args)==1:
+			self.__load_file__(args[0])
+			if 'language' in kwargs.keys():
+				self.language=kwargs['language']
+			else:
+				self.language='english'
 		else:
-			self.language='english'
-		if 'text' in kwargs.keys():
-			self.text=kwargs['text']
+			if not 'text' in kwargs.keys() and not 'filename' in kwargs.keys():
+				raise TypeError("Must have a filename or text argument")
+			if 'filename' in kwargs.keys():
+				self.__load_file__(kwargs['filename'])
+			if 'language' in kwargs.keys():
+				self.language=kwargs['language']
+			else:
+				self.language='english'
+			if 'text' in kwargs.keys():
+				self.text=kwargs['text']
 
 
 	
 	def __load_file__(self, filename):
-		myfile=open(self.__filename__, 'r')
+		myfile=open(filename, 'r')
 		self.text=myfile.read()
 
 	def all_words(self):
